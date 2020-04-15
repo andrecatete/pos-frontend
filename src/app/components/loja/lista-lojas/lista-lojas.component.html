@@ -1,0 +1,122 @@
+<div class="container-table">
+  <div class="mat-elevation-z8">
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <th id="id">#</th>
+            <th>Nome da Loja</th>
+            <th>Endereco</th>
+            <th>Telefone Contato</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let loja of lojas" (dblclick)="detalhar(loja)">
+            <td>{{loja.id}}</td>
+            <td>{{loja.nome}}</td>
+            <td>{{loja.ruaEnderecoComercial}}</td>
+            <td>{{loja.telefoneContato}}</td>
+            <td><button mat-raised-button color="primary"  (click)="editar(loja.id)"><mat-icon aria-hidden="false" aria-label="Detalhar">description</mat-icon>
+            </button>
+            {{' '}}<button mat-raised-button color="warn" (click)="deletar(loja.id)"><mat-icon aria-hidden="false" aria-label="Excluir loja">delete</mat-icon>
+            </button></td>
+          </tr>
+         
+        </tbody>
+      </table>
+    
+      <div class="row justify-content-end">
+        <div class="col-6">
+          <mat-paginator [pageSizeOptions]="[5, 10, 25]"></mat-paginator>
+        </div>
+        <div class="fab-bottom-right">
+          <button id="btn-add" mat-fab routerLink="../cadastroloja" color="primary"><mat-icon>add</mat-icon></button>
+        </div>
+      </div>
+    </div> 
+  </div> 
+  <ng-template #viewModal let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">Dados da Loja</h4>
+      </div>
+      <form [formGroup]="editProfileForm">
+      <div class="modal-body">
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <mat-form-field>
+              <mat-label>Nome da Loja:</mat-label>
+              <input matInput formControlName="nomeLoja">
+            </mat-form-field>
+          </div>
+          <div class="form-group col-md-3">
+            <mat-form-field>
+              <mat-label>Razão Social:</mat-label>
+              <input matInput formControlName="razaoSocial">
+            </mat-form-field>
+          </div>
+          <div class="form-group col-md-2">
+            <mat-form-field>
+              <mat-label>CNPJ:</mat-label>
+              <input matInput formControlName="cnpj">
+            </mat-form-field>
+          </div>
+          <div class="form-group col-md-3">
+            <mat-form-field>
+              <mat-label>Telefone de Contato:</mat-label>
+              <input matInput formControlName="telefoneContato">  
+          </mat-form-field>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-7">
+            <mat-form-field>
+              <mat-label>Rua:</mat-label>
+              <input matInput formControlName="ruaEndereco">  
+            </mat-form-field>
+          </div>
+          <div class="form-group col-md-2">
+            <mat-form-field>
+              <mat-label>Numero Endereco</mat-label>
+              <input matInput formControlName="numeroEndereco">  
+            </mat-form-field>
+          </div>
+          <div class="form-group col-md-3">
+            <mat-form-field>
+              <mat-label>Bairro:</mat-label>
+              <input matInput formControlName="bairroEndereco">
+            </mat-form-field>
+          </div>
+      </div>
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <mat-form-field>
+              <mat-label>Cidade:</mat-label>
+              <input matInput formControlName="cidadeEndereco">
+            </mat-form-field>
+          </div>
+          <div class="form-group col-md-4">
+            <mat-form-field>
+              <mat-label>Estado:</mat-label>
+              <input matInput formControlName="estadoEndereco">
+            </mat-form-field>
+          </div>
+          <div class="form-group col-md-4">
+            <mat-form-field>
+              <mat-label>CEP:</mat-label>
+              <input matInput formControlName="cep">
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+    </form>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-info" (click)="decline()">Fechar</button>
+      </div>
+  </ng-template>
+<ng-template #deleteModal>
+  <div class="modal-body text-center">
+    <p>Tem certeza que deseja excuir a loja?</p>
+    <button type="button" class="btn btn-default" (click)="confirm()">Sim</button>
+    <button type="button" class="btn btn-primary" (click)="decline()">Não</button>
+  </div>
+</ng-template>

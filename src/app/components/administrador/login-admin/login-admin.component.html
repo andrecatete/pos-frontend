@@ -1,0 +1,30 @@
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
+    <mat-card class="box">
+      <mat-card-header>
+        <mat-card-title>Login</mat-card-title>
+      </mat-card-header>
+      <p></p>
+      <form class="example-form" #f="ngForm" name="LoginForm" >
+        <mat-card-content>
+  
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Usuário" required id="UserName" name="username" [(ngModel)]="loginForm.username" #name="ngModel" [ngClass]="{ 'is-invalid': f.submitted && model.invalid }">
+          </mat-form-field>
+  
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Senha" required type="password" id="Password" name="password" [(ngModel)]="loginForm.password" #name="ngModel" >
+          </mat-form-field>
+  
+        </mat-card-content>
+        <div>
+         <label class="div-erro">{{ retornoErro }}</label> 
+        </div>
+        <button mat-raised-button colo type="button" class="btn-block" color="primary"  (click)="ValidaCampos(f) && Acessar(f)">Acessar</button>
+        <br />
+      </form>
+    </mat-card>
+  
+  </div>
+
+  
+  

@@ -1,0 +1,43 @@
+html, body{
+    width: 100%;
+    height:100%;
+    background-color:#E5E5E5;
+    margin: 0;
+  }
+
+.basic-container {
+    padding: 30px;
+  }
+
+  .title{
+    color:#FFFFFF;
+    font-family: cursive;
+  }
+  .nodecoration{
+    text-decoration: none;
+  }
+  .container{
+    margin-top: 2%;
+  }
+
+  .btn-info{
+    background-color: #007BFF;
+    color: white;
+}
+
+.opcoes{
+  min-width: 45px;
+  padding-right: 0px;
+  margin-right: 5px;
+}
+
+  .mat-raised-button{
+    min-width: 45px;
+
+  }
+
+  .fab-bottom-right {
+    position: fixed;
+     bottom: 30px;
+     right: 15px;
+    }

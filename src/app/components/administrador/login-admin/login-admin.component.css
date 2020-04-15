@@ -1,0 +1,7 @@
+.login-wrapper{height:100%;width:100%;background-image: url(../../../../assets/login-background.png);}
+.box{position:relative;top:20;right:20;float:left;padding:60px 50px 40px 50px;width:100%;background:#fff;border-radius:10px;max-width:330px; border-style: groove;border-color: #003e7e;}
+.login-wrapper .example-form{min-width:100%;max-width:300px;width:100%;}
+.login-wrapper .example-full-width,.login-wrapper .btn-block{width:100%;}
+.login-wrapper mat-card-header{text-align:center;width:100%;display:block;font-weight:700;}
+.login-wrapper mat-card-header mat-card-title{font-size:30px;margin:0;}
+.div-erro {font-size: small; color: red;}

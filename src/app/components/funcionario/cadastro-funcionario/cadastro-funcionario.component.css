@@ -1,0 +1,40 @@
+.example-fill-remaining-space {
+    /* This fills the remaining space, by using flexbox. 
+       Every toolbar row uses a flexbox row layout. */
+    flex: 1 1 auto;
+  }
+  .example-headers-align .mat-expansion-panel-header-title,
+  .example-headers-align .mat-expansion-panel-header-description {
+    flex-basis: 0;
+  }
+  
+  .example-headers-align .mat-expansion-panel-header-description {
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  mat-form-field {
+    margin-right: 12px;
+  }
+  
+  .barra{
+    margin-top: 10px;
+  }
+  
+  .card-admin-header{
+    margin-bottom: 5px;
+  }
+  
+  .card-admin-title{
+    margin-top: 8px;
+  }
+  
+  .card-admin-header-image {
+    background-image: url('https://img.icons8.com/windows/24/000000/petition.png');
+    background-size: cover;
+    border-style: solid;
+    border-width: 1px;
+  }
+  
+  .div-erro {font-size: small; color: red;}
+  

@@ -1,0 +1,87 @@
+<div class="card-block card-header white-color">
+  <form #f="ngForm">
+  <mat-form-field class="col-md-3">
+    <mat-label>Lojas</mat-label>
+    <mat-select [(ngModel)]="associacao.idLoja" title="Lojas" name="loja" #model="ngModel" (selectionChange)="listarProdutosLoja()" required>
+      <mat-option *ngFor="let loja of lojas" [value]="loja.id"> {{loja.nome}} </mat-option>
+  </mat-select>
+  <mat-error *ngIf="f.invalid">Loja é obrigatório.</mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="col-md-3">
+    <mat-label>Produtos</mat-label>
+    <mat-select matNativeControl [(ngModel)]="associacao.idProduto" title="Produtos" name="produto" #model="ngModel" required>
+      <mat-option *ngFor="let prod of produtos" [value]="prod.id">{{prod.nome}}</mat-option>
+  </mat-select>
+  <mat-error *ngIf="f.invalid">Produto é obrigatório.</mat-error>
+  </mat-form-field>
+  <button class="btn-add" mat-stroked-button routerLink="../cadastroproduto"
+    matTooltip="Não encontrou? Clique e cadastre"
+    aria-label="Button that displays a tooltip in various positions">
+    <mat-icon>add</mat-icon>
+  </button>
+  
+  <mat-form-field class="col-md-2">
+    <mat-label>Preço</mat-label>
+    <span matPrefix>R$</span>
+    <input type="number" matInput placeholder="Preço" [(ngModel)]="associacao.preco" name="preco" #model="ngModel">
+    <mat-error *ngIf="f.invalid">Preço é obrigatório.</mat-error>
+  </mat-form-field>
+
+  <button class="col-md-2" mat-raised-button (click)="salvar(f)" [disabled]="!f.valid">Incluir</button>
+</form>
+</div>
+
+    <div class="container-table">
+      <p clss="white-color" style="text-align: center">Produtos da loja</p>
+      <div class="mat-elevation-z8">
+          <table class="table table-bordered table-hover">
+            <thead>
+              <tr>
+                <th id="id">#</th>
+                <th>Produto</th>
+                <th>Preço</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let loja of lojaPreco; index as i">
+                <td>{{loja.produtoResource.id}}</td>
+                <td>{{loja.produtoResource.nome}}</td>
+                <td>{{loja.preco}}</td>
+                <td><button mat-raised-button color="primary" (click)="openModal(editProfileModal,loja)">Editar preço</button>
+                {{' '}}<button mat-raised-button color="warn" (click)="deletar()"><mat-icon aria-hidden="false" aria-label="Excluir assoiciação">delete</mat-icon>
+                </button></td>
+              </tr>
+            </tbody>
+          </table> 
+        </div> 
+</div>
+<ng-template #editPrecoModal let-modal>
+  <div class="modal-header">
+      <h4 class="modal-title pull-left">Alterar Preço</h4>
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="editProfileForm" (ngSubmit)="onSubmit()">
+        <mat-form-field class="example-full-width">
+          <mat-label>De:</mat-label>
+          <input matInput formControlName="precoAntigo">
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <mat-label>Para:</mat-label>
+          <input matInput type="number" placeholder="Preço novo" formControlName="precoNovo">
+        </mat-form-field>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-info" (click)="decline()">Cancelar</button>
+      <button type="button" class="btn btn-success" (click)="onSubmit()">Confirmar</button>
+    </div>
+</ng-template>
+<ng-template #deleteModal>
+  <div class="modal-body text-center">
+    <p>Tem certeza que deseja excuir a loja?</p>
+    <button type="button" class="btn btn-default" (click)="confirm()">Sim</button>
+    <button type="button" class="btn btn-primary" (click)="decline()">Não</button>
+  </div>
+</ng-template>

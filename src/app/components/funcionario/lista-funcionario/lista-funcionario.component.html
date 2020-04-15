@@ -1,0 +1,46 @@
+<mat-card class="container">
+    <mat-card-content class="barra">
+  
+  <div class="container-table">
+      <div class="mat-elevation-z8">
+          <table class="table table-bordered table-hover">
+            <thead>
+              <tr>
+                <th id="id">#</th>
+                <th>Nome</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let funcionario of funcionarios">
+                <td>{{ funcionario.id }}</td>
+                <td>{{ funcionario.nome }}</td>
+                <td>{{ formatarStatus(funcionario.enabled) }}</td>
+                <td class="acoes"><button mat-raised-button color="primary" (click)="editar(funcionario.id)">Detalhar</button>
+                {{' '}}<button mat-raised-button *ngIf="funcionario.enabled" color="warn" (click)="deletar(funcionario.id)">Inativar</button>
+                {{' '}}<button mat-raised-button *ngIf="!funcionario.enabled" color="primary" (click)="reativar(funcionario.id)">Reativar</button></td>
+              </tr>
+             
+            </tbody>
+          </table>
+        
+          <div class="row justify-content-end">
+            <div class="col-6">
+              <mat-paginator [pageSizeOptions]="[5, 10, 25]"></mat-paginator>
+            </div>
+            <div class="fab-bottom-right">
+              <button id="btn-add" mat-fab routerLink="../cadastrofuncionario" color="primary"><mat-icon>add</mat-icon></button>
+            </div>
+          </div>
+        </div> 
+      </div> 
+  
+    </mat-card-content>
+  </mat-card>
+    <ng-template #deleteModal>
+      <div class="modal-body text-center">
+        <p>Tem certeza que deseja Inativar a funcionario?</p>
+        <button type="button" class="btn btn-default" (click)="confirm()">Sim</button>
+        <button type="button" class="btn btn-primary" (click)="decline()">Não</button>
+      </div>
+    </ng-template>

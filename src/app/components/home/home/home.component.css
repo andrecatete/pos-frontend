@@ -1,0 +1,17 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+#divmenu {
+  height: 7%;
+  width: 100%;
+  background-color:#003e7e;
+  color: white;
+}
+
+.modal-content{
+  width: 400px;
+  right: 60px;
+  top: 40px;
+  
+}

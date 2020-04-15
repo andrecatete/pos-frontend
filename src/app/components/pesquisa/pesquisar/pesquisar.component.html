@@ -1,0 +1,46 @@
+<div class="login-wrapper container" fxLayout="row" fxLayoutAlign="center center" >
+    <mat-card class="box">
+      <mat-card-header>
+        <mat-card-title>Consultar Produtos</mat-card-title>
+      </mat-card-header>
+      <form class="example-form" #f="ngForm" name="LoginForm">
+        <mat-card-content>
+  
+          <mat-form-field class="example-full-width">
+            <mat-label>Categoria</mat-label>
+            <select matNativeControl title="Categoria" id="Categoria" name="Categoria" required>
+            </select>
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <mat-label>Marca</mat-label>
+            <select matNativeControl title="Marca"  id="Marca" name="Marca">
+            </select>
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Produto" id="Produto" name="Produto">
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <mat-label>Distância (KM)</mat-label>
+            <select matNativeControl title="Distancia"  id="Distancia" name="Distancia">
+              <option value="0">Não informado</option>
+              <option value="1">1</option>
+              <option value="3">3</option>
+              <option value="5">5</option>
+              <option value="10">10</option>
+              <option value="20">20</option>
+              <option value="50">50</option>
+            </select>
+          </mat-form-field>
+
+  
+        </mat-card-content>
+        <button mat-raised-button class="btn-block" type="button" color="primary" (click)="pesquisar()" >Pesquisar</button>
+      </form>
+    </mat-card>
+  </div>
+    
+  
+    

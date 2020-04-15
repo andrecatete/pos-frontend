@@ -1,0 +1,90 @@
+<mat-card class="container">
+  <form #f="ngForm">
+    <mat-card-header class="card-admin-header">
+        <div mat-card-avatar><mat-icon>store</mat-icon></div>
+        <mat-card-title class="card-admin-title">Cadastrar Loja</mat-card-title>
+    </mat-card-header>
+    <mat-divider></mat-divider>
+  <mat-card-content> 
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <mat-form-field>
+            <input matInput placeholder="Nome da Loja" [(ngModel)]="loja.nome" name="nome" required>
+            <mat-error *ngIf="f.invalid">Nome da loja é obrigatório.</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="form-group col-md-3">
+          <mat-form-field>
+            <input matInput placeholder="Razão Social" [(ngModel)]="loja.razaoSocial" name="razaoSocial" required>
+            <mat-error *ngIf="f.invalid">Razão social é obrigatório.</mat-error>
+
+          </mat-form-field>
+        </div>
+        <div class="form-group col-md-2">
+          <mat-form-field>
+            <input matInput placeholder="CNPJ" [(ngModel)]="loja.cnpj" name="cnpj" [textMask]="{mask: maskCnpj}" required>
+            <mat-error *ngIf="f.invalid">CNPJ deve conter 14 dígitos</mat-error>
+
+          </mat-form-field>
+        </div>
+        <div class="form-group col-md-3">
+          <mat-form-field>
+            <input matInput placeholder="Telefone" [(ngModel)]="loja.telefoneContato" name="telefone" [textMask]="{mask: maskTel}" required>
+            <mat-error *ngIf="f.invalid">Telefone é obrigatório.</mat-error>
+
+        </mat-form-field>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-7">
+          <mat-form-field>
+            <input matInput placeholder="Endereço da loja" [(ngModel)]="loja.ruaEnderecoComercial" name="rua" required>
+            <mat-error *ngIf="f.invalid">Rua é obrigatório.</mat-error>
+
+          </mat-form-field>
+        </div>
+        <div class="form-group col-md-2">
+          <mat-form-field>
+            <input matInput placeholder="Número" [(ngModel)]="loja.numeroEnderecoComercial" name="numero" required>
+            <mat-error *ngIf="f.invalid">Número da loja é obrigatório.</mat-error>
+
+          </mat-form-field>
+        </div>
+        <div class="form-group col-md-3">
+          <mat-form-field>
+            <input matInput placeholder="Bairro" [(ngModel)]="loja.bairroEnderecoComercial" name="bairro" required>
+            <mat-error *ngIf="f.invalid">Bairro da loja é obrigatório.</mat-error>
+
+          </mat-form-field>
+        </div>
+    </div>
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <mat-form-field>
+            <input matInput placeholder="Cidade" [(ngModel)]="loja.cidadeEnderecoComercial" name="cidade" required>
+            <mat-error *ngIf="f.invalid">Cidade é obrigatório.</mat-error>
+
+          </mat-form-field>
+        </div>
+        <div class="form-group col-md-4">
+          <mat-form-field>
+            <mat-label>Estado</mat-label>
+            <input matInput placeholder="Estado" [(ngModel)]="loja.estadoEnderecoComercial" name="estado" required>
+            <mat-error *ngIf="f.invalid">Estado é obrigatório.</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="form-group col-md-4">
+          <mat-form-field>
+            <input matInput placeholder="CEP" [(ngModel)]="loja.cepEnderecoComercial" name="cep" (blur)="consultaCEP($event.target.value, f)" [textMask]="{mask: maskCep}" required>
+            <mat-error *ngIf="f.invalid">CEP é obrigatório.</mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-divider></mat-divider>
+    <mat-card-actions>
+      <button mat-button (click)="retornar(f)">Cancelar</button>
+      <button mat-button class="btn-info" (click)="salvar(f)">Confirmar</button>
+    </mat-card-actions>
+  </form>
+</mat-card>

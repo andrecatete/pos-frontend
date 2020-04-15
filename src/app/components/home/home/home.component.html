@@ -1,0 +1,71 @@
+<nav fxFlexFill class="home">
+    <mat-toolbar>
+        <!-- <mat-icon style="color: red;"> location_on</mat-icon> <span class="title"><span style="color: black;">Meu</span>Produto</span> -->
+        <img src="../../../assets/meuproduto.png"  width="240px" height="60px"/>
+        <!-- This fills the remaining space of the current row -->
+        <span class="example-fill-remaining-space"></span>
+        <span class="example-spacer"></span>
+        <div *ngIf="!IsLogado">
+            <button mat-raised-button color="primary" type="button" routerLink="../login" routerLinkActive="router-link-active" >Login</button>
+            &nbsp;ou&nbsp; 
+            <button mat-raised-button color="primary" type="button" routerLink="../home/cadastro" routerLinkActive="router-link-active" (click)="logout()" >Cadastrar</button>
+        </div>
+        <div *ngIf="IsLogado">
+            Bem-vindo, fulano! &nbsp; <button mat-raised-button color="primary" type="button" routerLink="../home" routerLinkActive="router-link-active" (click)="logout()" >Logout</button>
+        </div>           
+        <!-- <a routerLink="../cadastro" class="nodecoration">Login</a> 
+       <a routerLink="../cadastro" class="nodecoration">Cadastro</a>  -->
+    </mat-toolbar>
+    <div id="divmenu">
+        <button mat-button routerLink="../home/pesquisar" routerLinkActive="router-link-active"  >Pesquisar</button>
+        <button mat-button *ngIf="IsFuncionario || IsAdmin" [matMenuTriggerFor]="menuFuncionario">Gerência Loja </button>
+        <mat-menu #menuFuncionario="matMenu" color="primary">
+            <button mat-menu-item color="primary" routerLink="../home/incluirproduto">Catalogo da Loja</button>
+            <button mat-menu-item color="primary">Atualizar Preços</button>
+        </mat-menu>
+        <button mat-button  *ngIf="IsAdmin" [matMenuTriggerFor]="menuAdm">Gerencia Adm.</button>
+        <mat-menu #menuAdm="matMenu" color="primary">
+            <button mat-menu-item color="primary" routerLink="lojas">Lojas</button>
+            <button mat-menu-item color="primary" routerLink="funcionarios">Funcionários</button> 
+            <button mat-menu-item color="primary" routerLink="marcas">Marcas</button>
+            <button mat-menu-item color="primary" routerLink="cadastroproduto">Produtos</button>
+            <button mat-menu-item color="primary" [matMenuTriggerFor]="menuDados">Gerenciar dados</button>   
+        </mat-menu>
+
+        <mat-menu #menuDados="matMenu" color="primary">
+            <button mat-menu-item routerLink="../home/cadastro" color="primary">Editar dados pessoais</button>
+            <button mat-menu-item (click)="desativarAdmin()" color="primary">Excluir dados pessoais</button>
+        </mat-menu>
+        <button mat-button  *ngIf="IsAdmin" [matMenuTriggerFor]="menuVis">Visibilidade</button>
+        <mat-menu #menuVis="matMenu" color="primary">
+            <button mat-menu-item color="primary">Histórico de alterações do produto</button>
+        </mat-menu>
+        <button mat-button [matMenuTriggerFor]="menuSobre">Ajuda</button>
+        <mat-menu #menuSobre="matMenu" color="primary">
+            <button mat-menu-item color="primary">Sobre nós</button>
+            <!-- <button mat-menu-item color="primary">Fale conosco</button> -->
+        </mat-menu>
+    </div>
+    <router-outlet></router-outlet>
+    <ng-template #deleteModal>
+        <!-- <div class="modal-content"> -->
+        <div class="modal-header">
+            <h4 class="modal-title pull-left">Desativar Conta</h4>
+          </div>
+          <div class="modal-body">
+            <p>Ao Confirmar, sua conta será desativada permanentemente. Deseja Continuar?</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" (click)="confirm()">Sim, desejo excluir</button>
+            <button type="button" class="btn btn-danger" (click)="decline()">Não</button>
+          </div>
+        <!-- </div>       -->
+        <!-- <div class="modal-body text-center">
+          <p>Tem certeza que deseja excuir a sua conta?</p>
+          <button type="button" class="btn btn-default" (click)="confirm()">Sim, desejo excluir</button>
+          <button type="button" class="btn btn-danger" (click)="decline()">Não</button>
+        </div> -->
+      </ng-template>
+</nav>
+
+
